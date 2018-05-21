@@ -77,13 +77,6 @@ class Unpack():
         else:
             return b
 
-    def regex(self, items):
-        items = os.path.basename(items)
-        regex = re.compile(r"D3D-P-HOS-(\d\d).*?\...*")
-        a = re.search(regex, items)
-        if a:
-            return(a.group(1))
-
     def ifDoesNotExist(self, pathA, pathZ):
         if not os.path.exists(pathZ):
             os.makedirs(pathZ)
@@ -171,7 +164,13 @@ class Unpack():
                     shutil.move(archivePath, os.path.join(self.path + self._tmp, path, item, name+subItem))
                 else:
                     pass
-
+                
+    def regex(self, items):
+        items = os.path.basename(items)
+        regex = re.compile(r"D3D-P-HOS-(\d\d).*?\...*")
+        a = re.search(regex, items)
+        if a:
+            return(a.group(1))
                     
 
 test = Unpack()
@@ -181,13 +180,13 @@ for path in test.oneDeep():
     test.twoDeep(path)
     test.exceptions(path)
     
-    test.rename(path, "D3D-People-HospitalVol2")
-    #test.rename2(path, "D3D-Antique-Furniture-")
+    test.rename(path, "Test-Models-Package-Vol1-")
+    test.rename2(path, "Test-Models-Package-Vol1-")
     
     test.exceptionsList = {}
     test.objectsList = []
     
     test.archive(path)
 
-#test.deleteTemp()
+test.deleteTemp()
 
