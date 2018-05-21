@@ -4,8 +4,24 @@ Idea behind this tool is to take pack of models, which might consist of dozens o
 
 ## Getting Started
 
+example code:
+test = Unpack()
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+for path in test.oneDeep():
+    print(path, len(os.listdir(os.path.join(test.path, path))))
+    test.twoDeep(path)
+    test.exceptions(path)
+    
+    test.rename(path, "Test Pack Name - ")
+    #test.rename2(path, "Test Pack Name - ")
+    
+    test.exceptionsList = {}
+    test.objectsList = []
+    
+    test.archive(path)
+
+#test.deleteTemp()
+
 
 ### Prerequisites
 
