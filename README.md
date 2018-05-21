@@ -20,7 +20,7 @@ for path in test.oneDeep():
     
     test.archive(path)
 
-#test.deleteTemp()
+test.deleteTemp()
 
 
 ### Prerequisites
